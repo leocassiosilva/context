@@ -1,12 +1,18 @@
-import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import React, { useContext } from 'react';
+import { StyleSheet, Text, View, TouchableOpacity, Keyboard} from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import {Input} from '../components/Input'
+import SimplesContext from '../contexts/SimplesContext';
 
 export function DadosProfissionais({navigation}) {
 
+    const {escolaridade, setEscolaridade, idioma, setIdioma, experiencia, setExperiencia} = useContext(SimplesContext);
+
     function formPage(){
-        navigation.navigate('Info');
+        if (escolaridade && idioma && experiencia) {
+            Keyboard.dismiss();
+            navigation.navigate('Info');   
+        }
     }
 
     return (
@@ -14,16 +20,15 @@ export function DadosProfissionais({navigation}) {
             <StatusBar
             animated={true}
             backgroundColor="#0E4DA4"/>
-            <Text style={styles.title}>Cadastre-se</Text>
 
-            <Input  placeholder="Nome" />
+            <Input  placeholder="Escolaridade" value={ escolaridade} onChangeText={ setEscolaridade}/>
 
-            <Input  placeholder="E-mail" />
+            <Input  placeholder="Idioma" value={ idioma} onChangeText={ setIdioma}/>
 
-            <Input  placeholder="CPF" />
+            <Input  placeholder="Experiência" value={ experiencia} onChangeText={ setExperiencia}/>
 
             <TouchableOpacity style={styles.btn} onPress={ () => formPage()}>
-                <Text style={styles.btn_text}>Proximo</Text> 
+                <Text style={styles.btn_text}>Enviar</Text> 
             </TouchableOpacity>
         </View>
     );

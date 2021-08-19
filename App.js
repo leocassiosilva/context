@@ -2,13 +2,15 @@ import React from 'react';
 import { StyleSheet} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { Routes } from './src/routes';
-
+import { SimplesProvider } from './src/contexts/SimplesContext';
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Routes/>
-    </NavigationContainer>
+    <SimplesProvider> 
+      <NavigationContainer>
+        <Routes/>
+      </NavigationContainer>
+    </SimplesProvider>
   );
 }
 

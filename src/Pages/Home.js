@@ -1,12 +1,19 @@
-import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import React, {useContext} from 'react';
+import { StyleSheet, Text, View, TouchableOpacity, Keyboard} from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import {Input} from '../components/Input'
+import SimplesContext from '../contexts/SimplesContext';
 
 export function Home({navigation}) {
 
+    const {nome, setNome, email, setEmail, cpf, setCpf} = useContext(SimplesContext);
+
+
     function formPage(){
-        navigation.navigate('DadosProfissionais');
+        if (nome && email && cpf ) {
+            Keyboard.dismiss();
+            navigation.navigate('DadosProfissionais');
+        } 
     }
 
     return (
@@ -16,11 +23,11 @@ export function Home({navigation}) {
             backgroundColor="#0E4DA4"/>
             <Text style={styles.title}>Cadastre-se</Text>
 
-            <Input  placeholder="Nome" />
+            <Input  placeholder="Nome" value={nome} onChangeText={setNome}/>
 
-            <Input  placeholder="E-mail" />
+            <Input  placeholder="E-mail" value={email} onChangeText={setEmail}/>
 
-            <Input  placeholder="CPF" />
+            <Input  placeholder="CPF" value={cpf} onChangeText={setCpf}/>
 
             <TouchableOpacity style={styles.btn} onPress={ () => formPage()}>
                 <Text style={styles.btn_text}>Proximo</Text> 

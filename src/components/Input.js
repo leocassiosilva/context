@@ -1,13 +1,17 @@
 import React from 'react'; 
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, TextInput } from 'react-native';
 
-export function Input({placeholder}){ 
+export function Input(props){ 
     
     return(
         <View style={styles.containerInput}>
             <TextInput 
                 style={styles.input}
-                placeholder={placeholder}/>
+                placeholder={props.placeholder}
+                onChangeText={ props.onChangeText }
+                value={ props.value }
+                 { ...props }
+            />
         </View>
     )
 }
@@ -17,7 +21,7 @@ const styles = StyleSheet.create({
     containerInput:{
         marginTop:40,
         width: '90%',
-        height: 65,
+        height: 60,
         backgroundColor: '#FFFFFF',
         flexDirection:'row',
         alignItems: 'center',
