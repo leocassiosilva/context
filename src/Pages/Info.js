@@ -1,13 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View} from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import {Input} from '../components/Input'
 
-export function Home({navigation}) {
-
-    function formPage(){
-        navigation.navigate('DadosProfissionais');
-    }
+export function Info({navigation}) {
 
     return (
         <View style={styles.container}>
@@ -21,10 +17,6 @@ export function Home({navigation}) {
             <Input  placeholder="E-mail" />
 
             <Input  placeholder="CPF" />
-
-            <TouchableOpacity style={styles.btn} onPress={ () => formPage()}>
-                <Text style={styles.btn_text}>Proximo</Text> 
-            </TouchableOpacity>
         </View>
     );
 }
@@ -39,24 +31,12 @@ const styles = StyleSheet.create({
         paddingLeft:20,
         justifyContent:'flex-start',
         alignItems:'center',
-    },
+      },
 
     title:{
         fontSize: 30,
         color:"#0E4DA4", 
         marginTop:70
-    }, 
-    btn:{
-        backgroundColor:'#0E4DA4',
-        marginTop:40,
-        width: '90%',
-        height: 56,
-        borderRadius:5,
-        alignItems:'center',
-        justifyContent:'center'
-    }, 
-    btn_text:{
-        color:'white'
     }
   });
 

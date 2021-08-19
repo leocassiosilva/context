@@ -3,10 +3,10 @@ import { StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import {Input} from '../components/Input'
 
-export function Home({navigation}) {
+export function DadosProfissionais({navigation}) {
 
     function formPage(){
-        navigation.navigate('DadosProfissionais');
+        navigation.navigate('Info');
     }
 
     return (
@@ -39,13 +39,13 @@ const styles = StyleSheet.create({
         paddingLeft:20,
         justifyContent:'flex-start',
         alignItems:'center',
-    },
+      },
 
     title:{
         fontSize: 30,
         color:"#0E4DA4", 
         marginTop:70
-    }, 
+    },
     btn:{
         backgroundColor:'#0E4DA4',
         marginTop:40,
